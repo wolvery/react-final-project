@@ -3,13 +3,13 @@ import BookItem from './BookItem.js'
 
 
 
-export class BookShelfBooks extends React.Component{
-  render() {
-    return(
+const BookShelfBooks = ({ books, updateBook}) => (
       <div className="bookshelf-books">
         <ol className="books-grid">
-          {this.props.books.map(book => (<BookItem book={book} updateBook={this.props.updateBook} />))}
+          {books.map(book => (<BookItem key={book.id} book={book} updateBook={updateBook} />))}
         </ol>
       </div>
-      )
-}
+      );
+
+
+export BookShelfBooks;
