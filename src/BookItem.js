@@ -9,7 +9,7 @@ const BookItem = ({book, updateBook}) => (
         <div className="book-top">
           <div className="book-cover" 
           style={{ width: 128, height: 193, backgroundImage: 'url({book.imageLinks.thumbnail})' }}></div>
-          <BookSelfChanger book={book} updateBook={updateBook} />
+          <BookShelfChanger book={book} updateBook={updateBook} />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors.join(",")}</div>
@@ -18,4 +18,4 @@ const BookItem = ({book, updateBook}) => (
     )
     
 
-export BookItem;
+export default BookItem;

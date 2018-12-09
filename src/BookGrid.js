@@ -12,4 +12,4 @@ const BookGrid = ({ books, updateBook}) => (
       );
 
 
-export BookGrid;
+export default BookGrid;
