@@ -1,15 +1,23 @@
 import React from 'react'
+import * as BooksAPI from './BooksAPI.js'
 
 
 
 
-export class BookShelfChanger extends React.Component{
-	state = {value:"move"}
+
+export default class BookShelfChanger extends React.Component{
+  constructor(props) {
+    super(props)
+	this.state = {value: ""}
+  }
 	
-	handleChange(event) {
-    	this.props.updateBook(this.props.books, event.target.value);
+	handleChange= (event) => {
+    	this.props.updateBook(this.props.book, event.target.value);
+        this.setState({value:event.target.value});
   	}
-
+	componentDidMount() {
+    BooksAPI.get(this.props.book.id).then((book) => this.setState({value: book.shelf}));
+  }
 	render() {
 		return(
 			<div className="book-shelf-changer">

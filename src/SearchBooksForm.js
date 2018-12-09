@@ -8,6 +8,7 @@ export default class SearchBooks extends React.Component {
 
   loadValue = event => {
     this.setState({query: event.target.value});
+    this.props.loadBooks(event.target.value);
   }
 
   performSearch = event =>{
@@ -18,8 +19,8 @@ export default class SearchBooks extends React.Component {
   render() {
     return (
         <div className="search-books-input-wrapper">
-          <form onsubmit={this.performSearch}>
-            <input type="text" placeholder="Search by title or author" value={this.state.query} onchange={this.loadValue} />
+          <form onSubmit={this.performSearch}>
+            <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.loadValue} />
             <input type="submit" hidden />
           </form>
         </div>

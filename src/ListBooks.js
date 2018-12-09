@@ -17,16 +17,19 @@ export default class ListBooks extends React.Component {
     BooksAPI.update(bookToUpdate, bookShelf);
     let bookUpdated = bookToUpdate;
     bookUpdated.shelf = bookShelf;
-    this.setState((currentState) =>  ({books:[...currentState.books.filter(bookInState => bookUpdated.id !== bookInState.id), bookUpdated]}));
-       
+    if (bookShelf !== "none"){
+      this.setState((currentState) =>  ({books:[...currentState.books.filter(bookInState => bookUpdated.id !== bookInState.id), bookUpdated]}));
+    }else{
+      this.setState((currentState) =>  ({books:[...currentState.books.filter(bookInState => bookUpdated.id !== bookInState.id)]}));
+    }
   }
 
   componentDidMount() {
-    BooksAPI.getall().then((booksRetrieved) => this.setState({books: booksRetrieved}));
+    BooksAPI.getAll().then((booksRetrieved) => this.setState({books: booksRetrieved}));
   }
 
   render() {
-    const shelves = [...new Set(this.props.books.map(book => book.shelf))];
+    const shelves = [...new Set(this.state.books.map(book => book.shelf))].sort();
     return (
 
         <div className="list-books">
@@ -35,7 +38,7 @@ export default class ListBooks extends React.Component {
           </div>
           <div className="list-books-content">
             <div>
-              {shelves.map(shelf => <BookShelf key={shelf} shelf={shelf} books={this.props.books.filter(book => book.shelf === shelf)} 
+              {shelves.map(shelf => <BookShelf key={shelf} shelf={shelf} books={this.state.books.filter(book => book.shelf === shelf && book.shelf)} 
                 updateBook={this.updateBook} />)              
               }
             </div>
