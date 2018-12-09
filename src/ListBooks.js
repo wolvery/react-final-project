@@ -14,12 +14,11 @@ export default class ListBooks extends React.Component {
  }
 
   updateBook = (bookToUpdate, bookShelf) => {    
-    BooksAPI.update(bookToUpdate, bookShelf).then(() => 
-      { 
-        let bookUpdated = bookToUpdate;
-        bookUpdated.shelf = bookShelf;
-        this.setState((currentState) =>  books:[...currentState.books.filter(bookInState => bookUpdated.id != bookInState.id), bookUpdated]);
-      } )
+    BooksAPI.update(bookToUpdate, bookShelf);
+    let bookUpdated = bookToUpdate;
+    bookUpdated.shelf = bookShelf;
+    this.setState((currentState) =>  books:[...currentState.books.filter(bookInState => bookUpdated.id != bookInState.id), bookUpdated]);
+       
   }
 
   componentDidMount() {
