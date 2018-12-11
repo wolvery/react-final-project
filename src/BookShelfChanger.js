@@ -1,7 +1,23 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI.js'
 
+const makeCancelable = (promise) => {
+  let hasCanceled_ = false;
 
+  const wrappedPromise = new Promise((resolve, reject) => {
+    promise.then(
+      val => hasCanceled_ ? reject() : resolve(val),
+      error => hasCanceled_ ? reject() : reject(error)
+    );
+  });
+
+  return {
+    promise: wrappedPromise,
+    cancel() {
+      hasCanceled_ = true;
+    },
+  };
+};
 
 
 
@@ -16,8 +32,12 @@ export default class BookShelfChanger extends React.Component{
         this.setState({value:event.target.value});
   	}
 	componentDidMount() {
-    BooksAPI.get(this.props.book.id).then((book) => this.setState({value: book.shelf}));
+    this.request = makeCancelable(BooksAPI.get(this.props.book.id));
+	this.request.promise.then((book) => this.setState({value: book.shelf})).catch(error => {});
   }
+	componentWillUnmount() {
+      this.request.cancel();
+}
 	render() {
 		return(
 			<div className="book-shelf-changer">

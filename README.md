@@ -1,15 +1,19 @@
-# MyReads Project
+# REACT: MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This is a project from Udacity to put in practice everything that we have learned so far. In this project you are going to see the functional and classed components. Functional Components are appropriate when they are going to be stateless. [Here is some good reason to use functional components when there is a chance](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc)
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+Besides these two option to write a component in react, you can see in this project the use of React-router and the apropriate moment to use external fetch.
 
-## TL;DR
+## How to Instal and use
 
-To get started developing right away:
+To get started :
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+
+To access:
+
+* Access the link provided while performing `npm install`
 
 ## What You're Getting
 ```bash
@@ -21,17 +25,27 @@ To get started developing right away:
 │   └── index.html # DO NOT MODIFY
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── App.js # This is the root of your app. Redirects to SearchBook and ListBook.
+    ├── App.test.js # Files with some initial tests.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
     ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    │ Developed files to fulfill the project
+    ├── BookGrid.js # Component to produce the rows of books.
+    ├── BookItem.js # Simple functional react component to render only a book.
+    ├── BookShelf.js # Functional stateless Component to represent a shelf which displays its name and a BookGrid.
+    ├── BookShelfChanger.js # Select box to represent the actual shelf of its book and an option to change it.
+    ├── SearchBooks.js # Displays the UI to the user perform an search using a possible term.
+    └── SearchBooksForm.js # Display a form to the user interact with.
+    
+    
 ```
 
+# Extra Informations provided by Udacity
 Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
 
 ## Backend Server

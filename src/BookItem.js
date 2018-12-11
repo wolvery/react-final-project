@@ -4,8 +4,8 @@ import BookShelfChanger from './BookShelfChanger.js'
 
 
 const BookItem = ({book, updateBook}) => {
-  const url = `url(${book.imageLinks.thumbnail})`;
-  const styleBook={width: 128, height: 193, backgroundImage: url  };
+ 
+  const styleBook={width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`  };
   return (
     <li>
       <div className="book">
